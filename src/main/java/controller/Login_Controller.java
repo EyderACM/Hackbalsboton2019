@@ -2,34 +2,54 @@ package controller;
 
 import controller.exceptions.EmptyException;
 import controller.exceptions.TooLongException;
+import model.crud.UserCRUD;
+import model.schemas.User;
 import view.Login;
 
+import javax.swing.*;
 import java.util.*;
 
 public class Login_Controller {
 
+    UserCRUD model = new UserCRUD();
+
     public void LoginUser(Login view) throws EmptyException, TooLongException {
-        //this.model = new Model();
+
+        User user = new User();
+
         Map<String, String> data = new HashMap<>();
         System.out.println(view.getEmailText());
         System.out.println(view.getPasswordText());
         data.put("user", view.getEmailText());
         //data.put("password", view.getPassword_Input());  //Vi estas dos propiedades en la presentacion del View sobre sus avances.
+        data.put("email", view.getEmailText());
+        data.put("password", view.getPasswordText());
 
-        if (!validCompleteness(data)) // Esta funcion de Alex
+        if (!validCompleteness(data))
         {
             throw new EmptyException();
         }
-        else if (data.get("user").length() > 45) // Supongo que lo mismo que aplica para espacios aplica para usuarios
+        else if (data.get("user").length() > 45)
         {
             throw new TooLongException();
         }
         else
         {
-            //model.login(data); // Supongo que el Pseudo API del model tiene esto por algun lado.
-            // Aqui podria tenerse una funcion async para saber si el login salio bien
-            // O podriamos tener una funcion aparte que el model utilize en nosotros para
-            // avisar al view
+            try{
+                user = model.getUser(data.get("email"));
+                validateLogin(user, view);
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(
+                        view, "Login Error" , "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+    }
+
+    public void validateLogin(User user, Login view){
+        if(user.getPassword() == view.getPasswordText()){
+            JOptionPane.showMessageDialog(
+                    view, "Login success" , "Success", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

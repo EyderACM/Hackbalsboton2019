@@ -1,10 +1,11 @@
-package model;
+package model.test;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import model.crud.HouseCRUD;
 import model.schemas.*;
-import model.test.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,10 +17,10 @@ import model.test.*;
  *
  * @author Eyder
  */
-public class modelMain {
+public class TestModel {
     public static void main(String[] args){
         House house = new House("Casa de Pepe");
-        houseCrud hc = new houseCrud();
+        HouseCRUD hc = new HouseCRUD();
         hc.createHouse(house);
         test();
     }
