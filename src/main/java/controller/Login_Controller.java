@@ -12,6 +12,7 @@ public class Login_Controller {
         //this.model = new Model();
         Map<String, String> data = new HashMap<>();
         System.out.println(view.getEmailText());
+        System.out.println(view.getPasswordText());
         data.put("user", view.getEmailText());
         //data.put("password", view.getPassword_Input());  //Vi estas dos propiedades en la presentacion del View sobre sus avances.
 
