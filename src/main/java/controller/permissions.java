@@ -22,7 +22,7 @@ public class permissions
                 } 
                 else 
                 {
-                    model.importGroupData(Ausuario);
+                    //model.importGroupData(Ausuario);
                 }
             }
         }
@@ -44,8 +44,8 @@ public class permissions
                 }
                 else
                 {
-                   model.importGroupData(grupoA); 
-                   model.importGroupData(status);
+                   //model.importGroupData(grupoA); 
+                   //model.importGroupData(status);
                 }
             }
            

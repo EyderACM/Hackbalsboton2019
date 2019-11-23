@@ -23,7 +23,7 @@ public class add_user
                 } 
                 else 
                 {
-                    modelx.importGroupData(Nusuario);
+                    //modelx.importGroupData(Nusuario);
                 }
             }
         }
@@ -55,7 +55,7 @@ public class add_user
         {
             if(contraseña.get(key).equals(comprobacion))
             {
-                model.NewUser(contraseña);
+                //model.NewUser(contraseña);
             }
             else
             {

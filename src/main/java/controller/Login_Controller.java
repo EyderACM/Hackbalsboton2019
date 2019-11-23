@@ -9,9 +9,9 @@ import java.util.*;
 public class Login_Controller {
 
     public void LoginUser(Login view) throws EmptyException, TooLongException {
-        this.model = new Model();
+        //this.model = new Model();
         Map<String, String> data = new HashMap<>();
-
+        System.out.println(view.getEmailText());
         data.put("user", view.getEmailText());
         //data.put("password", view.getPassword_Input());  //Vi estas dos propiedades en la presentacion del View sobre sus avances.
 
@@ -25,7 +25,7 @@ public class Login_Controller {
         }
         else
         {
-            model.login(data); // Supongo que el Pseudo API del model tiene esto por algun lado.
+            //model.login(data); // Supongo que el Pseudo API del model tiene esto por algun lado.
             // Aqui podria tenerse una funcion async para saber si el login salio bien
             // O podriamos tener una funcion aparte que el model utilize en nosotros para
             // avisar al view
@@ -37,7 +37,7 @@ public class Login_Controller {
         boolean isComplete = false;
         Set<String> keys = data.keySet();
         for(String key: keys){
-            if(!data.get(key).isBlank()){ //Checks that there is no empty information
+            if(!data.get(key).isEmpty()){ //Checks that there is no empty information
                 isComplete = true;
             }
         }
@@ -46,4 +46,4 @@ public class Login_Controller {
     }
 }
 
-}
+
