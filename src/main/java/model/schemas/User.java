@@ -6,19 +6,19 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "iduser")
     private int Id;
     @Column(name = "name")
     private String Name;
     @Column(name = "email")
     private String Email;
-    @Column(name = "password")
+    @Column(name = "password", columnDefinition = "LONGTEXT")
     private String Password;
 
     public User(){}
 
-    public User(int id, String name, String email, String password) {
-        Id = id;
+    public User(String name, String email, String password) {
         Name = name;
         Email = email;
         Password = password;
