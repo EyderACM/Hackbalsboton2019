@@ -15,17 +15,12 @@ public class House {
     public House() {
     }
 
-    public House(int id, String name) {
-        Id = id;
+    public House(String name) {
         Name = name;
     }
 
     public int getId() {
         return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
     }
 
     public String getName() {
