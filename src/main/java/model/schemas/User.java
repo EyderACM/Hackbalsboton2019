@@ -10,24 +10,18 @@ public class User {
     private int Id;
     @Column(name = "name")
     private String Name;
-    @Column(name = "admin", columnDefinition = "TINYINT")
-    @Type(type = "org.hibernate.type.NumericBooleanType")
-    private Boolean admin;
+    @Column(name = "email")
+    private String Email;
+    @Column(name = "password")
+    private String Password;
 
     public User(){}
 
-    public User(int id, String name, Boolean admin) {
+    public User(int id, String name, String email, String password) {
         Id = id;
-        this.Name = name;
-        this.admin = admin;
-    }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
+        Name = name;
+        Email = email;
+        Password = password;
     }
 
     public String getName() {
@@ -35,23 +29,32 @@ public class User {
     }
 
     public void setName(String name) {
-        this.Name = name;
+        Name = name;
     }
 
-    public Boolean getAdmin() {
-        return admin;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "Id=" + Id +
-                ", name='" + Name + '\'' +
-                ", admin=" + admin +
+                ", Name='" + Name + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Password='" + Password + '\'' +
                 '}';
     }
 }
