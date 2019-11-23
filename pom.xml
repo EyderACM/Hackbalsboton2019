@@ -22,6 +22,11 @@
     </build>
     <repositories>
         <repository>
+            <id>netbeans</id>
+            <name>Netbeans rep</name>
+            <url>http://bits.netbeans.org/maven2/</url>
+        </repository>
+        <repository>
             <id>unknown-jars-temp-repo</id>
             <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
             <url>file:${project.basedir}/lib</url>
@@ -58,6 +63,4 @@
             <version>SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-
 </project>
