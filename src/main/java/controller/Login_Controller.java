@@ -2,7 +2,7 @@ package controller;
 
 import controller.exceptions.EmptyException;
 import controller.exceptions.TooLongException;
-import 
+import view.Login;
 
 import java.util.*;
 
@@ -12,8 +12,8 @@ public class Login_Controller {
         this.model = new Model();
         Map<String, String> data = new HashMap<>();
 
-        data.put("user", view.getUsername_Input());
-        data.put("password", view.getPassword_Input());  //Vi estas dos propiedades en la presentacion del View sobre sus avances.
+        data.put("user", view.getEmailText());
+        //data.put("password", view.getPassword_Input());  //Vi estas dos propiedades en la presentacion del View sobre sus avances.
 
         if (!validCompleteness(data)) // Esta funcion de Alex
         {
