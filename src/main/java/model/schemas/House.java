@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "houses")
 public class House {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idhouse")
     private int Id;
     @Column(name = "name")
@@ -14,17 +15,12 @@ public class House {
     public House() {
     }
 
-    public House(int id, String name) {
-        Id = id;
+    public House(String name) {
         Name = name;
     }
 
     public int getId() {
         return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
     }
 
     public String getName() {

@@ -9,13 +9,12 @@
         <class>model.schemas.House</class>
         <class>model.schemas.Permission</class>
         <class>model.schemas.User</class>
-        <class>model.schemas.Group</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> 
-            <property name="javax.persistence.jdbc.url" value=""/> <!--db url-->
-            <property name="javax.persistence.jdbc.user" value=""/> <!--db username-->
-            <property name="javax.persistence.jdbc.password" value=""/> <!--db password-->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/domotica_poo?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/> <!--db url-->
+            <property name="javax.persistence.jdbc.user" value="root"/> <!--db username-->
+            <property name="javax.persistence.jdbc.password" value="root"/> <!--db password-->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
         </properties>
