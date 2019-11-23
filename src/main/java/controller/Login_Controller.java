@@ -2,12 +2,13 @@ package controller;
 
 import controller.exceptions.EmptyException;
 import controller.exceptions.TooLongException;
+import view.Login;
 
 import java.util.*;
 
 public class Login_Controller {
 
-    public void LoginUser(Login_UI view) throws EmptyException, TooLongException {
+    public void LoginUser(Login view) throws EmptyException, TooLongException {
         this.model = new Model();
         Map<String, String> data = new HashMap<>();
 
