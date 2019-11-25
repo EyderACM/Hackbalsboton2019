@@ -10,6 +10,13 @@ import java.util.*;
 
 public class Login_Controller {
 
+    public static void main(String args[]){
+        UserCRUD model = new UserCRUD();
+        User user;
+        user = model.getUser("Axel@lol.com");
+        System.out.println(user.toString());
+    }
+
     public void LoginUser(Login view) throws EmptyException {
 
         User user;
@@ -17,7 +24,7 @@ public class Login_Controller {
 
         Map<String, String> data = new HashMap<>();
         data.put("email", view.getEmailText());
-        data.put("password", view.getPasswordText());
+        //data.put("password", view.getPasswordText());
 
         if (!validCompleteness(data))
         {
@@ -27,7 +34,7 @@ public class Login_Controller {
         {
             try{
                 user = model.getUser(data.get("email"));
-                validateLogin(data, user, view);
+                //validateLogin(data, user, view);
             }catch(Exception e){
                 JOptionPane.showMessageDialog(
                         view, "Login error" , "ERROR", JOptionPane.ERROR_MESSAGE);
