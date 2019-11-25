@@ -1,7 +1,6 @@
 package controller;
 
 import controller.exceptions.EmptyException;
-import controller.exceptions.TooLongException;
 import model.crud.UserCRUD;
 import model.schemas.User;
 import view.Login;
@@ -11,14 +10,12 @@ import java.util.*;
 
 public class Login_Controller {
 
-    UserCRUD model = new UserCRUD();
+    public void LoginUser(Login view) throws EmptyException {
 
-    public void LoginUser(Login view) throws EmptyException, TooLongException {
-
-        User user = new User();
+        User user;
+        UserCRUD model = new UserCRUD();
 
         Map<String, String> data = new HashMap<>();
-        System.out.println(view.getEmailText());
         data.put("email", view.getEmailText());
         data.put("password", view.getPasswordText());
 
@@ -26,25 +23,21 @@ public class Login_Controller {
         {
             throw new EmptyException();
         }
-        else if (data.get("user").length() > 45)
-        {
-            throw new TooLongException();
-        }
         else
         {
             try{
                 user = model.getUser(data.get("email"));
-                validateLogin(user, view);
+                validateLogin(data, user, view);
             }catch(Exception e){
                 JOptionPane.showMessageDialog(
-                        view, "Login Error" , "ERROR", JOptionPane.ERROR_MESSAGE);
+                        view, "Login error" , "ERROR", JOptionPane.ERROR_MESSAGE);
             }
 
         }
     }
 
-    public void validateLogin(User user, Login view){
-        if(user.getPassword() == view.getPasswordText()){
+    public void validateLogin(Map<String,String> data, User user, Login view){
+        if(user.getPassword() == data.get("password")){
             JOptionPane.showMessageDialog(
                     view, "Login success" , "Success", JOptionPane.INFORMATION_MESSAGE);
         }
