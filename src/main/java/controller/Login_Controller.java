@@ -24,7 +24,7 @@ public class Login_Controller {
 
         Map<String, String> data = new HashMap<>();
         data.put("email", view.getEmailText());
-        //data.put("password", view.getPasswordText());
+        data.put("password", view.getPasswordText());
 
         if (!validCompleteness(data))
         {
