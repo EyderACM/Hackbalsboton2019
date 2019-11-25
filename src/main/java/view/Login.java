@@ -128,6 +128,9 @@ public class Login extends javax.swing.JFrame {
     public String getEmailText(){
         return jTextField3.getText();
     }
+    public String getPasswordText(){
+        return jPasswordField1.getText();
+    }
     /**
      * @param args the command line arguments
      */
