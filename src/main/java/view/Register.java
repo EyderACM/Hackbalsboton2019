@@ -8,6 +8,9 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import controller.add_user;
+import controller.exceptions.EmptyException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -54,6 +57,11 @@ add_user Reg = new add_user();
 
         jTextField2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jTextField2.setText("*Insert E-Mail*");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jButton1.setText("Back");
@@ -72,6 +80,11 @@ add_user Reg = new add_user();
         });
 
         jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         jPasswordField2.setText("jPasswordField2");
 
@@ -133,12 +146,24 @@ add_user Reg = new add_user();
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-       
+    try {
+        Reg.nuevo_usuario(this);
+    } catch (EmptyException ex) {
+        Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+    }
 
 
 
        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +200,20 @@ add_user Reg = new add_user();
         });
     }
 
+     public String getNombre(){
+        return jTextField1.getText();
+    }
+     public String getCorreo(){
+        return jTextField2.getText();
+    }
+     public String getContrasena(){
+        return jPasswordField1.getText();
+    }
+     public String getConfcontrasena(){
+        return jPasswordField2.getText();
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
