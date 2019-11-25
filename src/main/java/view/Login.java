@@ -114,8 +114,6 @@ public class Login extends javax.swing.JFrame {
             Log.LoginUser(this);
         } catch (EmptyException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TooLongException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
