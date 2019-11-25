@@ -24,7 +24,7 @@ public class delete_area
                 } 
                 else 
                 {
-                    modelx.importGroupData(nombre);
+                   // modelx.importGroupData(nombre);
                 }
             }
         }

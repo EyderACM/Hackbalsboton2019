@@ -12,9 +12,9 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> 
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/domotica_poo?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/> <!--db url-->
-            <property name="javax.persistence.jdbc.user" value="root"/> <!--db username-->
-            <property name="javax.persistence.jdbc.password" value="root"/> <!--db password-->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.228.115:3306/domotica_poo?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/> <!--db url-->
+            <property name="javax.persistence.jdbc.user" value="pepe"/> <!--db username-->
+            <property name="javax.persistence.jdbc.password" value="pepe"/> <!--db password-->
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
         </properties>

@@ -1,4 +1,4 @@
-package model.test;
+package model.bootstraper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
