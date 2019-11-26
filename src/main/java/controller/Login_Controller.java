@@ -6,10 +6,12 @@ import model.schemas.User;
 import view.Login;
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Login_Controller {
 
+    //Test model connection
     public static void main(String args[]){
         UserCRUD model = new UserCRUD();
         User user;
@@ -17,6 +19,7 @@ public class Login_Controller {
         System.out.println(user.toString());
     }
 
+    //Validates the input and send it to the model
     public void LoginUser(Login view) throws EmptyException {
 
         User user;
@@ -34,19 +37,33 @@ public class Login_Controller {
         {
             try{
                 user = model.getUser(data.get("email"));
-                //validateLogin(data, user, view);
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(
-                        view, "Login error" , "ERROR", JOptionPane.ERROR_MESSAGE);
+                validateLogin(data, user, view);
+            }catch(Exception ex){
+                showError(ex, view);
             }
 
         }
     }
 
+    //Verify the password
     public void validateLogin(Map<String,String> data, User user, Login view){
         if(user.getPassword() == data.get("password")){
             JOptionPane.showMessageDialog(
                     view, "Login success" , "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    //Display an OptionPane in the view with the error
+    public void showError(Exception ex, Login view){
+        if(ex instanceof EmptyException){
+            JOptionPane.showMessageDialog(
+                    view, "You must fill every text field" , "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else if(ex instanceof SQLException){
+            JOptionPane.showMessageDialog(
+                    view, "Database error" , "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(
+                    view, "Unexpected error", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
