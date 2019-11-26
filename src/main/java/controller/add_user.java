@@ -21,11 +21,10 @@ public class add_user
        
        nuser.setName(view.getNombre());
        nuser.setEmail(view.getCorreo());
-       nuser.setPassword(view.Contrasena);
+       nuser.setPassword(view.getContrasena());
        
        UserCRUD crudnu = new UserCRUD();
-       crudnu.createUser(nuser);
-  
+       crudnu.createUser(nuser);  
     }
     
 }       
