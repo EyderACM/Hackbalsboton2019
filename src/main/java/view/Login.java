@@ -112,8 +112,8 @@ public class Login extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             Log.LoginUser(this);
-        } catch (EmptyException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Log.showError(ex, this);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
