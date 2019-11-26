@@ -15,62 +15,17 @@ import javax.swing.JOptionPane;
 
 public class add_user 
 {
-    public void nuevo_usuario(HashMap<String,String> Nusuario,HashMap<String,String> contraseña,String comprobacion)
+    public void nuevo_usuario(Register view)
     {
-        //Try and catch para nombre de usuario
-        try
-        {
-            Set<String> llave = Nusuario.keySet();
-            for (String key : llave)
-            {
-                if(Nusuario.get(key).isEmpty())
-                {
-                    throw new NullPointerException();
-                }
-                else
-                {
-                    //modelx.importGroupData(Nusuario);
-                }
-            }
-        }
-        catch(NullPointerException ex)
-        {
-            JOptionPane.showMessageDialog(null,"error");
-        }
-
-        Set<String> llaveC = contraseña.keySet();
-        //try and catch para contraseña
-        try
-        {
-            for(String key : llaveC)
-            {
-                if(contraseña.get(key).isEmpty())
-                {
-                    throw new NullPointerException();
-                }
-            }
-
-        }
-        catch(NullPointerException ex)
-        {
-            JOptionPane.showMessageDialog(null,"error");
-        }
-
-        //verificacion de contraseña
-        for (String key : llaveC)
-        {
-            if(contraseña.get(key).equals(comprobacion))
-            {
-                //modelx.NewUser(contraseña);
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Las contraseñas no son iguales");
-            }
-        }
-
-
+       User nuser = new User();
+       
+       nuser.setName(view.getNombre());
+       nuser.setEmail(view.getCorreo());
+       nuser.setPassword(view.Contrasena);
+       
+       UserCRUD crudnu = new UserCRUD();
+       crudnu.createUser(nuser);
+  
     }
-
-
-}
+    
+}       
