@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 package model.crud;
-import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
-
 import model.bootstraper.EMFBootstrapper;
 import model.schemas.User;
 
@@ -26,7 +25,7 @@ public class UserCRUD {
             transaction.begin();
             manager.persist(user);
             transaction.commit();
-            System.out.printf("se ha a�adido con exito");
+            System.out.printf("se ha añadido con exito");
         }
         catch(PersistenceException e) {
             transaction.rollback();
