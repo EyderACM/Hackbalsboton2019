@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 public class add_user 
 {
- public void nuevo_usuario(Register view) throws EmptyException
+ public void nuevo_usuario(Register view)
  {   
   User nuser = new User();
   
@@ -37,27 +37,20 @@ public class add_user
   //Aunque no muestre el mensaje aun asi retorna la excepcion
    
   //confirmacion de todos los espacios fueron rellenados
-  try
+  Set<String> llave = data.keySet();
+  for (String key : llave) 
   {
-   Set<String> llave = data.keySet();
-   for (String key : llave) 
+   if(data.get(key).isEmpty())
    {
-    if(data.get(key).isEmpty())
+    if (debounce == 0)
     {
-     throw new NullPointerException();
-    } 
-    else 
-    {
-     campos = 1;
+     debounce = 1;
+     JOptionPane.showMessageDialog(null, "Por favor rellene todos los espacios");
     }
-   }
-  }
-  catch(NullPointerException ex)
-  {
-   if (debounce == 0)
+   } 
+   else 
    {
-    debounce = 1;
-    JOptionPane.showMessageDialog(null,"Por favor, rellene todos los espacios");
+    campos = 1;
    }
   }
 
