@@ -47,7 +47,7 @@ public class Login_Controller {
 
     //Verify the password
     public void validateLogin(Map<String,String> data, User user, Login view){
-        if(user.getPassword() == data.get("password")){
+        if(user.getPassword().equals(data.get("password"))){
             JOptionPane.showMessageDialog(
                     view, "Login success" , "Success", JOptionPane.INFORMATION_MESSAGE);
         }

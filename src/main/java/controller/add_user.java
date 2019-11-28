@@ -15,62 +15,74 @@ import javax.swing.JOptionPane;
 
 public class add_user 
 {
-    public void nuevo_usuario(HashMap<String,String> Nusuario,HashMap<String,String> contraseña,String comprobacion)
+    public void nuevo_usuario(Register view) throws EmptyException
     {
-        //Try and catch para nombre de usuario
+        int flag=0;
+        
+       User nuser = new User();
+       
+       nuser.setName(view.getNombre());
+       nuser.setEmail(view.getCorreo());
+       nuser.setPassword(view.getContrasena());
+       
+        Map<String, String> data = new HashMap<>();
+        data.put("nombre", view.getNombre());
+        data.put("correo", view.getCorreo());
+        data.put("contrasena", view.getContrasena());
+        data.put("conf_contrasena", view.getConfcontrasena());
+        
+        //confirmacion de todos los espacios fueron rellenados
         try
         {
-            Set<String> llave = Nusuario.keySet();
-            for (String key : llave)
+            Set<String> llave = data.keySet();
+            for (String key : llave) 
             {
-                if(Nusuario.get(key).isEmpty())
+                if(data.get(key).isEmpty())
                 {
                     throw new NullPointerException();
-                }
-                else
+                } 
+                else 
                 {
-                    //modelx.importGroupData(Nusuario);
+                   flag +=1;
                 }
             }
         }
         catch(NullPointerException ex)
         {
-            JOptionPane.showMessageDialog(null,"error");
+            JOptionPane.showMessageDialog(null,"rellene todos los espacios por favor");
         }
-
-        Set<String> llaveC = contraseña.keySet();
-        //try and catch para contraseña
-        try
+        
+        //confirmacion de contrase?a
+        if(data.get("contrasena").equals(data.get("conf_contrasena")))
         {
-            for(String key : llaveC)
-            {
-                if(contraseña.get(key).isEmpty())
-                {
-                    throw new NullPointerException();
-                }
-            }
-
+            flag+=1;
         }
-        catch(NullPointerException ex)
+        else
         {
-            JOptionPane.showMessageDialog(null,"error");
+            JOptionPane.showMessageDialog(null,"Las contrase?as no coinciden");
         }
-
-        //verificacion de contraseña
-        for (String key : llaveC)
+        
+        //verificacion de que es un correo
+        int verifi=0;
+        verifi=data.get("correo").indexOf("@");
+        
+        if (verifi!=-1)
         {
-            if(contraseña.get(key).equals(comprobacion))
-            {
-                //modelx.NewUser(contraseña);
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Las contraseñas no son iguales");
-            }
+            flag+=1;
         }
-
-
+        else
+        {
+            JOptionPane.showMessageDialog(null, "no se reconoce el correo intente de nuevo");
+        }
+        
+        //envia la informacion si todo es correcto
+        if(flag==3)
+        {
+            UserCRUD crudnu = new UserCRUD();
+            crudnu.createUser(nuser);
+        }
+        
+        flag=0;
     }
-
-
-}
+   
+}       
