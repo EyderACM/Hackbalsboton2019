@@ -25,9 +25,6 @@ public class add_user
        nuser.setEmail(view.getCorreo());
        nuser.setPassword(view.getContrasena());
        
-       UserCRUD crudnu = new UserCRUD();
-       
-       
         Map<String, String> data = new HashMap<>();
         data.put("nombre", view.getNombre());
         data.put("correo", view.getCorreo());
@@ -81,6 +78,7 @@ public class add_user
         //envia la informacion si todo es correcto
         if(flag==3)
         {
+            UserCRUD crudnu = new UserCRUD();
             crudnu.createUser(nuser);
         }
         
