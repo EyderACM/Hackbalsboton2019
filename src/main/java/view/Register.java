@@ -8,6 +8,9 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import controller.add_user;
+import controller.exceptions.EmptyException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -138,12 +141,19 @@ add_user Reg = new add_user();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       
+        Login bLogin = new Login(); 
+        bLogin.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
+    try {
         Reg.nuevo_usuario(this);
+    } catch (EmptyException ex) {
+        Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+    }
 
 
 
