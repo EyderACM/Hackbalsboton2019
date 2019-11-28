@@ -13,4 +13,8 @@ public final class EMFBootstrapper {
     public static EntityManager openEntityManager() {
         return entityManagerFactory.createEntityManager();
     }
+
+    public static void closeEntityManager(){
+        entityManagerFactory.close();
+    }
 }
