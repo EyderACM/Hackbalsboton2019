@@ -7,7 +7,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 import model.schemas.Area;
 
-public class EspacesCRUD {
+public class SpacesCRUD {
     public void createArea(Area area){
         EntityManager manager = EMFBootstrapper.openEntityManager();
         EntityTransaction transaction = manager.getTransaction();
