@@ -29,22 +29,18 @@ public class Device {
     @ManyToOne
     @JoinColumn(name = "idroom")
     private Room room;
-    @ManyToOne
-    @JoinColumn(name = "iduser")
-    private User user;
     
 
     public Device() {
     }
 
-    public Device(String name, String type, String brand, String model, Boolean state, Room room, User user) {
+    public Device(String name, String type, String brand, String model, Boolean state, Room room) {
         Name = name;
         Type = type;
         Brand = brand;
         Model = model;
         State = state;
         this.room = room;
-        this.user = user;
     }
 
     public int getId() {
@@ -99,11 +95,4 @@ public class Device {
         this.room = room;
     }
     
-    public User getUser(){
-        return user;
-    }
-    
-    public void setUser(User user){
-        this.user = user;
-    }
 }
