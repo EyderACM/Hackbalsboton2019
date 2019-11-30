@@ -5,6 +5,7 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
     <persistence-unit name="DomoticaModel">
+        <class>model.schemas.Room</class>
         <class>model.schemas.Device</class>
         <class>model.schemas.House</class>
         <class>model.schemas.Permission</class>
