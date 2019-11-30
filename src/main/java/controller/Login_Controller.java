@@ -1,27 +1,31 @@
 package controller;
 
 import controller.exceptions.EmptyException;
-import controller.exceptions.TooLongException;
 import model.crud.UserCRUD;
 import model.schemas.User;
 import view.Login;
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Login_Controller {
 
-    UserCRUD model = new UserCRUD();
+    //Test model connection
+    public static void main(String args[]){
+        UserCRUD model = new UserCRUD();
+        User user;
+        user = model.getUser("Axel@lol.com");
+        System.out.println(user.toString());
+    }
 
-    public void LoginUser(Login view) throws EmptyException, TooLongException {
+    //Validates the input and send it to the model
+    public void LoginUser(Login view) throws EmptyException {
 
-        User user = new User();
+        User user;
+        UserCRUD model = new UserCRUD();
 
         Map<String, String> data = new HashMap<>();
-        System.out.println(view.getEmailText());
-        System.out.println(view.getPasswordText());
-        data.put("user", view.getEmailText());
-        //data.put("password", view.getPassword_Input());  //Vi estas dos propiedades en la presentacion del View sobre sus avances.
         data.put("email", view.getEmailText());
         data.put("password", view.getPasswordText());
 
@@ -29,27 +33,37 @@ public class Login_Controller {
         {
             throw new EmptyException();
         }
-        else if (data.get("user").length() > 45)
-        {
-            throw new TooLongException();
-        }
         else
         {
             try{
                 user = model.getUser(data.get("email"));
-                validateLogin(user, view);
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(
-                        view, "Login Error" , "ERROR", JOptionPane.ERROR_MESSAGE);
+                validateLogin(data, user, view);
+            }catch(Exception ex){
+                showError(ex, view);
             }
 
         }
     }
 
-    public void validateLogin(User user, Login view){
-        if(user.getPassword() == view.getPasswordText()){
+    //Verify the password
+    public void validateLogin(Map<String,String> data, User user, Login view){
+        if(user.getPassword().equals(data.get("password"))){
             JOptionPane.showMessageDialog(
                     view, "Login success" , "Success", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    //Display an OptionPane in the view with the error
+    public void showError(Exception ex, Login view){
+        if(ex instanceof EmptyException){
+            JOptionPane.showMessageDialog(
+                    view, "You must fill every text field" , "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else if(ex instanceof SQLException){
+            JOptionPane.showMessageDialog(
+                    view, "Database error" , "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(
+                    view, "Unexpected error", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
