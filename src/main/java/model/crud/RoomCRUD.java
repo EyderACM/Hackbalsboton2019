@@ -1,9 +1,7 @@
 package model.crud;
 
 import model.bootstraper.EMFBootstrapper;
-import model.schemas.Area;
 import model.schemas.Room;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
