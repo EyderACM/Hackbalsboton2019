@@ -2,7 +2,8 @@ package model.crud;
 
 import model.bootstraper.EMFBootstrapper;
 import model.schemas.Device;
-
+import java.util.ArrayList;
+import java.util.HashSet;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
@@ -34,6 +35,19 @@ public class DeviceCRUD {
         }
         return device;
     }
+    
+    public ArrayList<Device> getDevices(){
+        ArrayList<Device> devices;
+        
+        EntityManager manager = EMFBootstrapper.openEntityManager();
+        try {
+            devices = (ArrayList<Device>)manager.createQuery("FROM Device").getResultList();
+        }catch (PersistenceException e){
+            throw e; 
+        }
+        
+        return devices;
+    }
 
     public void deleteDevice(String id){
         
@@ -58,6 +72,14 @@ public class DeviceCRUD {
                 manager.close();
             }
         }
+    }
+    
+    public void offDevice(Device device){
+        device.setState(false);
+    }
+    
+    public void onDevice(Device device){
+        device.setState(true);
     }
 
 }
