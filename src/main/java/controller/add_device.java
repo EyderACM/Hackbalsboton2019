@@ -71,7 +71,7 @@ public class add_device
   }
 
   //Validar tipo correcto
-  if (data.get("type").isBlank())
+  if (data.get("type").trim().isEmpty())
   {
    if (debounce == 0)
    {
