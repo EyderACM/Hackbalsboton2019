@@ -158,6 +158,10 @@ add_user Reg = new add_user();
 
     try {
         Reg.nuevo_usuario(this);
+         Login Log=new Login();
+      Log
+              .setVisible(true);
+      this.dispose();
     } catch (EmptyException ex) {
         Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
     }
