@@ -24,25 +24,26 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="163" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="274" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="391" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace pref="238" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jPasswordField2" alignment="1" min="-2" pref="377" max="-2" attributes="0"/>
-                  <Component id="jPasswordField1" alignment="1" min="-2" pref="377" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="1" min="-2" pref="377" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="1" min="-2" pref="377" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jPasswordField2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jPasswordField1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTextField1" alignment="0" pref="377" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="239" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jButton2" min="-2" pref="165" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,25 +52,25 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace pref="54" max="32767" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="144" max="32767" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
+              <Component id="jTextField1" pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <Component id="jTextField2" pref="28" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="32767" attributes="0"/>
-              <Component id="jTextField2" min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="jPasswordField1" pref="28" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="32767" attributes="0"/>
-              <Component id="jPasswordField1" min="-2" pref="28" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
-              <Component id="jPasswordField2" min="-2" pref="28" max="-2" attributes="0"/>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="33" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Component id="jPasswordField2" pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <Component id="jButton2" pref="33" max="32767" attributes="0"/>
+              <EmptySpace pref="107" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,7 +89,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="*Insert Name*"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Name"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
@@ -99,7 +102,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="*Insert E-Mail*"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
@@ -121,7 +125,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Register Me"/>
+        <Property name="text" type="java.lang.String" value="Register"/>
+        <Property name="actionCommand" type="java.lang.String" value="Register"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
@@ -129,7 +134,8 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
@@ -137,7 +143,8 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField2"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Password"/>
       </Properties>
     </Component>
   </SubComponents>
