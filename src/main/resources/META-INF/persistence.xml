@@ -10,6 +10,7 @@
         <class>model.schemas.House</class>
         <class>model.schemas.Permission</class>
         <class>model.schemas.User</class>
+        <class>model.schemas.Area</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> 
