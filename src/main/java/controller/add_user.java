@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 
 public class add_user 
 {
+
  public void nuevo_usuario(Register view) throws EmptyException
  {   
   User nuser = new User();
