@@ -2,10 +2,13 @@ package model.crud;
 
 import model.bootstraper.EMFBootstrapper;
 
+import java.util.ArrayList;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 import model.schemas.Area;
+import model.schemas.Room;
 
 public class SpacesCRUD {
     public void createArea(Area area){
@@ -65,13 +68,17 @@ public class SpacesCRUD {
         return area;
     }
 
-    private void clone(Area area,Area newArea){
-        area.setName(newArea.getName());
+    public ArrayList<Room> getRooms(String id){
+        ArrayList<Room> rooms;
+        EntityManager manager = EMFBootstrapper.openEntityManager();
+        try {
+            rooms = ( ArrayList<Room>) manager.createQuery("from Room u where u.idarea='" + id + "'").getSingleResult();
+        }
+        catch(PersistenceException e) {
+            throw e;
+        }
+        return rooms;
     }
-
-//    public String getRooms(Group group){
-//
-//    }
 
 
 
