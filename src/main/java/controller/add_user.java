@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class add_user 
 {
-    public void nuevo_usuario(HashMap<String,String> Nusuario,HashMap<String,String> contraseña,String comprobacion)
+    public void nuevo_usuario(HashMap<String,String> Nusuario,HashMap<String,String> contrasena,String comprobacion)
     {
         //Try and catch para nombre de usuario
          try
@@ -32,13 +32,13 @@ public class add_user
             JOptionPane.showMessageDialog(null,"error");
         }
          
-        Set<String> llaveC = contraseña.keySet();
+        Set<String> llaveC = contrasena.keySet();
          //try and catch para contraseña
          try
         {
             for(String key : llaveC)
             {
-                if(contraseña.get(key).isEmpty())
+                if(contrasena.get(key).isEmpty())
                 {
                     throw new NullPointerException();
                 } 
@@ -53,13 +53,13 @@ public class add_user
         //verificacion de contraseña
         for (String key : llaveC)
         {
-            if(contraseña.get(key).equals(comprobacion))
+            if(contrasena.get(key).equals(comprobacion))
             {
                 //model.NewUser(contraseña);
             }
             else
             {
-                JOptionPane.showMessageDialog(null,"Las contraseñas no son iguales");
+                JOptionPane.showMessageDialog(null,"Las contrase�as no son iguales");
             }
         }
         
