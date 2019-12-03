@@ -8,15 +8,16 @@ package controller;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import model.crud.SpacesCRUD;
 import model.schemas.Group;
-import view.AddSpace;
+import view.setupAreas;
 /**
  *
  * @author Josué
  */
 public class add_space 
 {
-    public void add_space(AddSpace view)
+    public void add_space(setupAreas view)
     {
         String gname;
         Map<String, String> data = new HashMap<>();
@@ -39,13 +40,13 @@ public class add_space
             }
             else
             {
-                SpaceCRUD nuevo = new SpaceCRUD();
+                SpacesCRUD nuevo = new SpacesCRUD();
                 Group grupo = new Group();         
                 
                 grupo.setName(gname);
                 try
                 {
-                    nuevo.createspace(grupo);
+                    nuevo.createArea(grupo);
                 }
                 catch (Exception e)
                 {
