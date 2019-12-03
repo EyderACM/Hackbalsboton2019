@@ -5,10 +5,12 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
     <persistence-unit name="DomoticaModel">
+        <class>model.schemas.Room</class>
         <class>model.schemas.Device</class>
         <class>model.schemas.House</class>
         <class>model.schemas.Permission</class>
         <class>model.schemas.User</class>
+        <class>model.schemas.Area</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> 

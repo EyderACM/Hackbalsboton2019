@@ -1,29 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model.crud;
 
+import model.bootstraper.EMFBootstrapper;
+import model.schemas.Room;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
-import model.bootstraper.EMFBootstrapper;
-import model.schemas.User;
 
-
-/**
- *
- * @author joses
- */
-public class UserCRUD {
-    
-    public void createUser(User user){
+public class RoomCRUD {
+    public void createRoom(Room room){
         EntityManager manager = EMFBootstrapper.openEntityManager();
         EntityTransaction transaction = manager.getTransaction();
         try {
             transaction.begin();
-            manager.persist(user);
+            manager.persist(room);
             transaction.commit();
             System.out.printf("se ha añadido con exito");
         }
@@ -36,31 +25,29 @@ public class UserCRUD {
         }
     }
 
-    public User getUser(String email){
+    public Room getRoom(String id){
         EntityManager manager = EMFBootstrapper.openEntityManager();
-        User user = new User();
+        Room room = new Room();
         try {
-            user = (User) manager.createQuery("from User u where u.Email='" + email + "'").getSingleResult();
-        }
-        catch(PersistenceException e) {
+            room = (Room) manager.createQuery("FROM ROOM u WHERE u.idroom='"+id+"'").getSingleResult();
+        }catch(PersistenceException e) {
             throw e;
         }
-
-        return user;
+        return room;
     }
-    
-    public void deleteUser(String email){
+
+    public void deleteRoom(String id){
         String delims = "[,]";
-        String[] tokens = email.split(delims);
+        String[] tokens = id.split(delims);
 
 
         for(int i = 0; i < tokens.length; i++){
-            User user = getUser(tokens[i]);
+            Room room = getRoom(tokens[i]);
             EntityManager manager = EMFBootstrapper.openEntityManager();
             EntityTransaction transaction = manager.getTransaction();
             try {
                 transaction.begin();
-                manager.remove(user);
+                manager.remove(room);
                 transaction.commit();
                 System.out.printf("se ha eliminado con exito");
             }
@@ -73,5 +60,4 @@ public class UserCRUD {
             }
         }
     }
-
 }
