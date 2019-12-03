@@ -17,6 +17,10 @@ public class Devices extends javax.swing.JFrame {
     public Devices() {
         initComponents();
     }
+    public void toggle () throws Exception
+    {
+        this.setVisible(!this.isVisible());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

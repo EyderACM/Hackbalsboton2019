@@ -31,16 +31,18 @@ public class Device {
     private Room room;
     
 
-    public Device() {
-    }
-
-    public Device(String name, String type, String brand, String model, Boolean state, Room room) {
+    public Device(int id, String name, String type, String brand, String model, Boolean state, Group group) {
+        Id = id;
         Name = name;
         Type = type;
         Brand = brand;
         Model = model;
         State = state;
         this.room = room;
+    }
+
+    public Device() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {
