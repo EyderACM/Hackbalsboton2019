@@ -8,8 +8,14 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 
 public class DeviceCRUD {
+    private EntityManager manager;
+
+    public DeviceCRUD(EntityManager manager) {
+        this.manager = manager;
+    }
+
     public void createDevice(Device device){
-        EntityManager manager = EMFBootstrapper.openEntityManager();
+
         EntityTransaction transaction = manager.getTransaction();
         try {
             transaction.begin();
