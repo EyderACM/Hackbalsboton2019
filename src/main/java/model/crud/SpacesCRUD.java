@@ -80,6 +80,20 @@ public class SpacesCRUD {
         return rooms;
     }
 
+    
+    
 
+    public Area getAreaByName(String name){
+        EntityManager manager = EMFBootstrapper.openEntityManager();
+        Area area = new Area();
+        try {
+            area = (Area) manager.createQuery("from Area u where u.name='" + name + "'").getSingleResult();
+        }
+        catch(PersistenceException e) {
+            throw e;
+        }
+
+        return area;
+    }
 
 }

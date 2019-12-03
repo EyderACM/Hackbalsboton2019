@@ -8,13 +8,17 @@ package view;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import controller.AreaCRUD;
+import java.util.ArrayList;
 
 /**
  *
  * @author Daniel
  */
 public class setupAreas extends javax.swing.JFrame {
-    HashMap<String, String> areas;
+    
+    ArrayList<String> areasToDelete;
+    ArrayList<String> areasToAdd;
+    HashMap<String, String> areasCurrent;
     DefaultListModel defaultListModel;
     AreaCRUD crud;
     /**
@@ -23,12 +27,12 @@ public class setupAreas extends javax.swing.JFrame {
     public setupAreas() {
         initComponents();
         defaultListModel = new DefaultListModel<>();
-        areas = new HashMap<String, String>();
+        areasCurrent = new HashMap<String, String>();
         crud = new AreaCRUD();
-        areas = crud.getDataFromController();
+        areasCurrent = crud.getDataFromController();
         List.setModel(defaultListModel);
-        for (int i = 0; i < areas.size(); i++) {
-            defaultListModel.addElement(areas.values().toArray()[i]);
+        for (int i = 0; i < areasCurrent.size(); i++) {
+            defaultListModel.addElement(areasCurrent.values().toArray()[i]);
         }
     }
 
@@ -149,6 +153,7 @@ public class setupAreas extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         add(areaText.getText());
         areaText.setText("");
+        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -158,16 +163,25 @@ public class setupAreas extends javax.swing.JFrame {
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         System.out.println(List.getModel());
-        crud.sendDataToModel(areas);
+        crud.sendNewArea(areasToAdd);
+        crud.deleteExistingArea(areasToDelete);
+
     }//GEN-LAST:event_confirmButtonActionPerformed
+    
     public void remove(String area){
         List.setModel(defaultListModel);
         defaultListModel.removeElement(area);
+        areasToDelete.add(area);
+        
+        if(areasToAdd.contains(area)){
+            areasToAdd.remove(area);
+        }
         
     }
     public void add(String area){
         List.setModel(defaultListModel);
         defaultListModel.addElement(area);
+        areasToAdd.add(area);
         
     }
     public void toggle () throws Exception

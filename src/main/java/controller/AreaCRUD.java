@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 import model.crud.SpacesCRUD;
@@ -31,14 +32,26 @@ public class AreaCRUD {
         }
     }
     
-    
-    public void sendDataToModel(HashMap<String, String> temp_areas){      
-        Set<String> keys = temp_areas.keySet();
-        
-        for(String key : keys){
+    //Enviar al modelo las areas a añadir una por una
+    public void sendNewArea(ArrayList<String> toAdd){      
+        for(int i = 0; i<toAdd.size(); i++){
             area = new Area();
-            area.setName(temp_areas.get(key));
+            area.setName(toAdd.get(i));
             model.createArea(area);
+        }
+    }
+    
+    //Juntar los id's de las areas a eliminar en un string separadas por ','
+    public void deleteExistingArea(ArrayList<String> toDelete){
+        String deleted = "";
+        String id;
+        String joinId;
+        
+        for(int i= 0; i<toDelete.size(); i++){
+            area = model.getAreaByName(toDelete.get(i));
+            id = String.valueOf(area.getId());
+            joinId = deleted.concat( id + "," );
+            model.deleteArea(joinId);
         }
     }
     
