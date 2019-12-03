@@ -158,6 +158,7 @@ public class setupAreas extends javax.swing.JFrame {
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         System.out.println(List.getModel());
+        crud.sendDataToModel(areas);
     }//GEN-LAST:event_confirmButtonActionPerformed
     public void remove(String area){
         List.setModel(defaultListModel);
