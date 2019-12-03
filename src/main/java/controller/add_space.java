@@ -5,11 +5,10 @@
  */
 package controller;
 
+import controller.exceptions.*;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
-import model.crud.SpacesCRUD;
-import model.schemas.Group;
 import view.setupAreas;
 /**
  *
@@ -17,42 +16,34 @@ import view.setupAreas;
  */
 public class add_space 
 {
-    public void add_space(setupAreas view)
+    public void validSpace(setupAreas view) throws EmptyException, TooLongException
     {
         String gname;
         Map<String, String> data = new HashMap<>();
         
-        data.put("gname", view.getNombre());
+        data.put("gname", view.getAreaText());
         
         gname = data.get("gname");
         int size = gname.length();
         
         if(data.keySet().isEmpty())
         {
-          JOptionPane.showMessageDialog(null, "por favor rellene el espacio");
+          throw new EmptyException();
         } 
         else 
         {
             if (size > 45)
             {
-                JOptionPane.showMessageDialog(null, "El nombre debe tener menos de 45 caracteres");
-                        
-            }
-            else
-            {
-                SpacesCRUD nuevo = new SpacesCRUD();
-                Group grupo = new Group();         
-                
-                grupo.setName(gname);
-                try
-                {
-                    nuevo.createArea(grupo);
-                }
-                catch (Exception e)
-                {
-                    JOptionPane.showMessageDialog(null, "error");
-                }
+               throw new TooLongException();             
             }    
+        }
+    }
+    
+    public void showExceptions(Exception ex, setupAreas view){
+        if(ex instanceof EmptyException){
+            JOptionPane.showMessageDialog(null, "por favor rellene el espacio");
+        }else if(ex instanceof TooLongException){
+            JOptionPane.showMessageDialog(null, "El nombre debe tener menos de 45 caracteres");
         }
     }
 }

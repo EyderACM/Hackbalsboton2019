@@ -8,6 +8,7 @@ package view;
 import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import controller.AreaCRUD;
+import controller.add_space;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -30,7 +31,7 @@ public class setupAreas extends javax.swing.JFrame {
         defaultListModel = new DefaultListModel<>();
         areasCurrent = new HashMap<String, String>();
         crud = new AreaCRUD();
-        areasCurrent = crud.getDataFromController();
+        areasCurrent = crud.getCurrentAreas();
         List.setModel(defaultListModel);
         for (int i = 0; i < areasCurrent.size(); i++) {
             defaultListModel.addElement(areasCurrent.values().toArray()[i]);
@@ -152,8 +153,16 @@ public class setupAreas extends javax.swing.JFrame {
     }//GEN-LAST:event_areaTextActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        add(areaText.getText());
-        areaText.setText("");
+        add_space validNewSpace = new add_space();
+        
+        try{
+            validNewSpace.validSpace(this);
+            add(areaText.getText());
+            areaText.setText("");
+            
+        }catch(Exception e){
+           validNewSpace.showExceptions(e, this);
+        }
         
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -164,8 +173,14 @@ public class setupAreas extends javax.swing.JFrame {
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         System.out.println(List.getModel());
-        crud.sendNewArea(areasToAdd);
-        crud.deleteExistingArea(areasToDelete);
+        
+        try{
+            crud.sendNewArea(areasToAdd);
+            crud.deleteExistingArea(areasToDelete);
+        }
+        catch(Exception ex){
+            crud.showExceptions(ex, this);
+        }
 
     }//GEN-LAST:event_confirmButtonActionPerformed
     
@@ -183,10 +198,7 @@ public class setupAreas extends javax.swing.JFrame {
                 break;
             }
         }
-        if(areasToAdd.contains(area)){
-            areasToAdd.remove(area);
-        }
-        
+
     }
     
     public void add(String area){
@@ -195,6 +207,11 @@ public class setupAreas extends javax.swing.JFrame {
         areasToAdd.add(area);
         
     }
+    
+    public String getAreaText(){
+        return areaText.getText();
+    }
+    
     public void toggle () throws Exception
     {
         this.setVisible(!this.isVisible());

@@ -8,8 +8,11 @@ package controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import javax.swing.JOptionPane;
+import model.crud.HouseCRUD;
 import model.crud.SpacesCRUD;
 import model.schemas.Area;
+import view.setupAreas;
 
 /**
  *
@@ -26,14 +29,17 @@ public class AreaCRUD {
         model = new SpacesCRUD();
     }
     
-    private void getDataFromModel(){
-        for (int i = 0; i < 10; i++) {
-            areas.put(""+i, "Area#"+i);
-        }
+    public HashMap<String, String> getCurrentAreas(){
+        HouseCRUD houseModel = new HouseCRUD(); 
+        HashMap<String,String> currentAreas = new HashMap<>();
+        
+        
+        
+        return currentAreas;
     }
     
     //Enviar al modelo las areas a añadir una por una
-    public void sendNewArea(ArrayList<String> toAdd){      
+    public void sendNewArea(ArrayList<String> toAdd) throws NullPointerException{      
         for(int i = 0; i<toAdd.size(); i++){
             area = new Area();
             area.setName(toAdd.get(i));
@@ -42,7 +48,7 @@ public class AreaCRUD {
     }
     
     //Juntar los id's de las areas a eliminar en un string separadas por ','
-    public void deleteExistingArea(HashMap<String, String> toDelete){
+    public void deleteExistingArea(HashMap<String, String> toDelete) throws NullPointerException{
         String deleted = "";
         String joinId = null;
         
@@ -54,9 +60,9 @@ public class AreaCRUD {
         model.deleteArea(joinId);
     }
     
-    
-    public HashMap<String, String> getDataFromController(){
-        getDataFromModel();
-        return areas;
+    public void showExceptions(Exception ex, setupAreas view){
+        if(ex instanceof NullPointerException){
+            JOptionPane.showMessageDialog(null, "No hay nuevos cambios");
+        }
     }
 }
