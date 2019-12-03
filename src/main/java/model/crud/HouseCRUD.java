@@ -18,9 +18,13 @@ import java.util.ArrayList;
  * @author joses
  */
 public class HouseCRUD {
-    
+    private EntityManager manager;
+
+    public HouseCRUD(EntityManager manager) {
+        this.manager = manager;
+    }
+
     public void createHouse(House house){
-        EntityManager manager = EMFBootstrapper.openEntityManager();
         EntityTransaction transaction = manager.getTransaction();
         try {
             transaction.begin();
