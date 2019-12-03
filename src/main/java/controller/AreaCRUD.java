@@ -42,17 +42,16 @@ public class AreaCRUD {
     }
     
     //Juntar los id's de las areas a eliminar en un string separadas por ','
-    public void deleteExistingArea(ArrayList<String> toDelete){
+    public void deleteExistingArea(HashMap<String, String> toDelete){
         String deleted = "";
-        String id;
-        String joinId;
+        String joinId = null;
         
-        for(int i= 0; i<toDelete.size(); i++){
-            area = model.getAreaByName(toDelete.get(i));
-            id = String.valueOf(area.getId());
-            joinId = deleted.concat( id + "," );
-            model.deleteArea(joinId);
+        Set<String> keys = toDelete.keySet();
+        for(String key : keys){
+            joinId = deleted.concat(key + ",");
         }
+        
+        model.deleteArea(joinId);
     }
     
     

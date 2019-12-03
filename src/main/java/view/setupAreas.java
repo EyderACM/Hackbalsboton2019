@@ -9,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import controller.AreaCRUD;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class setupAreas extends javax.swing.JFrame {
     
-    ArrayList<String> areasToDelete;
+    HashMap<String, String> areasToDelete;
     ArrayList<String> areasToAdd;
     HashMap<String, String> areasCurrent;
     DefaultListModel defaultListModel;
@@ -168,16 +169,26 @@ public class setupAreas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_confirmButtonActionPerformed
     
+    
+    
     public void remove(String area){
         List.setModel(defaultListModel);
         defaultListModel.removeElement(area);
-        areasToDelete.add(area);
         
+        //Busar en las areas actuales el area que tenga el mismo 'key' para agregarlo al map
+        Set<String> keys = areasCurrent.keySet();
+        for(String key : keys){
+            if(areasCurrent.get(key).equals(area)){
+                areasToDelete.put(key, area);
+                break;
+            }
+        }
         if(areasToAdd.contains(area)){
             areasToAdd.remove(area);
         }
         
     }
+    
     public void add(String area){
         List.setModel(defaultListModel);
         defaultListModel.addElement(area);
