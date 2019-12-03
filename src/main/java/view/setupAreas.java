@@ -173,14 +173,8 @@ public class setupAreas extends javax.swing.JFrame {
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         System.out.println(List.getModel());
-        
-        try{
             crud.sendNewArea(areasToAdd);
             crud.deleteExistingArea(areasToDelete);
-        }
-        catch(Exception ex){
-            crud.showExceptions(ex, this);
-        }
 
     }//GEN-LAST:event_confirmButtonActionPerformed
     

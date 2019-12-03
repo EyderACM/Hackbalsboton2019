@@ -39,7 +39,7 @@ public class AreaCRUD {
     }
     
     //Enviar al modelo las areas a añadir una por una
-    public void sendNewArea(ArrayList<String> toAdd) throws NullPointerException{      
+    public void sendNewArea(ArrayList<String> toAdd){      
         for(int i = 0; i<toAdd.size(); i++){
             area = new Area();
             area.setName(toAdd.get(i));
@@ -62,7 +62,7 @@ public class AreaCRUD {
     
     public void showExceptions(Exception ex, setupAreas view){
         if(ex instanceof NullPointerException){
-            JOptionPane.showMessageDialog(null, "No hay nuevos cambios");
+            JOptionPane.showMessageDialog(null, "Hubo un error");
         }
     }
 }
