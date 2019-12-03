@@ -17,7 +17,10 @@ public class setupRooms extends javax.swing.JFrame {
     public setupRooms() {
         initComponents();
     }
-
+    public void toggle () throws Exception
+    {
+        this.setVisible(!this.isVisible());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

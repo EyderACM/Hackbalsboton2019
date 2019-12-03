@@ -14,6 +14,10 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home2
      */
+    public void toggle () throws Exception
+    {
+        this.setVisible(!this.isVisible());
+    }
     public Home() {
         initComponents();
     }

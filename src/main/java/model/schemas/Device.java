@@ -27,9 +27,6 @@ public class Device {
     @JoinColumn(name = "idgroup")
     private Group group;
 
-    public Device() {
-    }
-
     public Device(int id, String name, String type, String brand, String model, Boolean state, Group group) {
         Id = id;
         Name = name;
@@ -38,6 +35,10 @@ public class Device {
         Model = model;
         State = state;
         this.group = group;
+    }
+
+    public Device() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {
