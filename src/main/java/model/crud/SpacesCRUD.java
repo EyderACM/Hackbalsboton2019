@@ -72,7 +72,7 @@ public class SpacesCRUD {
         ArrayList<Room> rooms;
         EntityManager manager = EMFBootstrapper.openEntityManager();
         try {
-            rooms = ( ArrayList<Room>) manager.createQuery("from Room u where u.idarea='" + id + "'");
+            rooms = ( ArrayList<Room>) manager.createQuery("from Room u where u.idarea='" + id + "'").getSingleResult();
         }
         catch(PersistenceException e) {
             throw e;
