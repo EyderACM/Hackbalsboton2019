@@ -38,45 +38,6 @@ public class HouseCRUD {
             manager.close();
         }
     }
-    
-     public void updateHouse(House house,House newHouse){
-        EntityManager manager = EMFBootstrapper.openEntityManager();
-        EntityTransaction transaction = manager.getTransaction();
-        try {
-            transaction.begin();
-            manager.merge(house);
-            clone(house,newHouse);
-            manager.persist(house);
-            transaction.commit();
-            System.out.printf("se ha anadido con exito");
-        }
-        catch(PersistenceException e) {
-            transaction.rollback();
-            throw e;
-        }
-        finally {
-            manager.close();
-        }
-    }
-     
-      public void deleteHouse(House house){
-        EntityManager manager = EMFBootstrapper.openEntityManager();
-        EntityTransaction transaction = manager.getTransaction();
-        try {
-            transaction.begin();
-            manager.remove(house);
-            transaction.commit();
-            System.out.printf("se ha eliminado con exito");
-        }
-        catch(PersistenceException e) {
-            transaction.rollback();
-            throw e;
-        }
-        finally {
-            manager.close();
-        }
-        
-      }    
     private void clone(House house,House newHouse){
         house.setName(newHouse.getName());
     } 

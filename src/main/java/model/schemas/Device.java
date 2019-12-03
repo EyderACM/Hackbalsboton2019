@@ -3,6 +3,8 @@ package model.schemas;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -10,7 +12,8 @@ import javax.persistence.ManyToOne;
 public class Device {
 
     @Id
-    @Column(name = "idpermission")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "iddevice")
     private int Id;
     @Column(name = "name")
     private String Name;
@@ -20,32 +23,28 @@ public class Device {
     private String Brand;
     @Column(name = "model")
     private String Model;
-    @Column(name = "admin", columnDefinition = "TINYINT")
+    @Column(name = "state", columnDefinition = "TINYINT")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean State;
     @ManyToOne
-    @JoinColumn(name = "idgroup")
-    private Group group;
+    @JoinColumn(name = "idroom")
+    private Room room;
+    
 
     public Device() {
     }
 
-    public Device(int id, String name, String type, String brand, String model, Boolean state, Group group) {
-        Id = id;
+    public Device(String name, String type, String brand, String model, Boolean state, Room room) {
         Name = name;
         Type = type;
         Brand = brand;
         Model = model;
         State = state;
-        this.group = group;
+        this.room = room;
     }
 
     public int getId() {
         return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
     }
 
     public String getName() {
@@ -88,11 +87,12 @@ public class Device {
         State = state;
     }
 
-    public Group getGroup() {
-        return group;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public void setRoom(Room room) {
+        this.room = room;
     }
+    
 }

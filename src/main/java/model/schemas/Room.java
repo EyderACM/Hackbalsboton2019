@@ -1,32 +1,27 @@
 package model.schemas;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(name = "groups")
-public class Group {
+@Table(name = "room")
+public class Room {
     @Id
-    @Column(name = "idgroup")
+    @Column(name = "idroom")
     private int Id;
     @Column(name = "name")
     private String Name;
+    @Column(name = "idarea")
+    private String IdArea;
 
-    public Group() {
-    }
+    public Room(){}
 
-    public Group(int id, String name, House house) {
-        Id = id;
+    public Room(String name, String idarea) {
         Name = name;
+        IdArea = idarea;
     }
 
     public int getId() {
         return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
     }
 
     public String getName() {
@@ -37,11 +32,16 @@ public class Group {
         Name = name;
     }
 
+    public String getIdArea() {
+        return IdArea;
+    }
+
     @Override
     public String toString() {
-        return "Group{" +
+        return "User{" +
                 "Id=" + Id +
-                ", Name='" + Name +
+                ", Name='" + Name + '\'' +
+                ", IdArea='" + IdArea + '\'' +
                 '}';
     }
 }
