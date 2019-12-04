@@ -7,58 +7,71 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "iduser")
-    private int Id;
+    @Column(name = "user_id")
+    private int id;
     @Column(name = "name")
-    private String Name;
+    private String name;
     @Column(name = "email")
-    private String Email;
-    @Column(name = "password", columnDefinition = "LONGTEXT")
-    private String Password;
+    private String email;
+    @Column(name = "password", columnDefinition = "LONGTEXT")   
+    private String password;
+    @Column(name = "question")
+    private int question;
+    @Column(name = "answer", columnDefinition = "LONGTEXT")
+    private String answer;
 
     public User(){}
 
-    public User(String name, String email, String password) {
-        Name = name;
-        Email = email;
-        Password = password;
+    public User(String name, String email, String password, int question, String answer) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.question = question;
+        this.answer = answer;
     }
-
     public int getId() {
-        return Id;
+        return id;
     }
-
     public String getName() {
-        return Name;
+        return name;
     }
-
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
-
     public String getEmail() {
-        return Email;
+        return email;
     }
-
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
-
     public String getPassword() {
-        return Password;
+        return password;
     }
-
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
-
-    @Override
-    public String toString() {
+    public int getQuestion() {
+        return question;
+    }
+    public void setQuestion(int question) {
+        this.question = question;
+    }
+    public String getAnswer() {
+        return answer;
+    }
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }  
+    
+    
+    public String getInfo() {
         return "User{" +
-                "Id=" + Id +
-                ", Name='" + Name + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Password='" + Password + '\'' +
+                "Id=" + id +
+                ", Name='" + name + '\'' +
+                ", Email='" + email + '\'' +
+                ", Password='" + password + '\'' +
+                ", Question='" + question + '\'' +
+                ", Answer='" + answer + '\'' +
                 '}';
     }
 }
